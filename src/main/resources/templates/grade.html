@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Grade</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="js/main.js"></script>
+
+</head>
+<body ng-app="bfCodeTest">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">BF Code Test</a>
+    <button type="button" class="btn btn-success" onclick="window.location.href='/add'" style="margin-right: 10px">SELECT SUBJECT</button>
+    <button type="button" class="btn btn-success" onclick="window.location.href='/exam'" style="margin-right: 10px">EXAM</button>
+    <button type="button" class="btn btn-success" onclick="window.location.href='/grade'" style="margin-right: 10px">GRADE</button>
+</nav>
+
+<div class="row">
+    <div class="col-md-8" >
+        <table class="table" style="margin-top: 20px;text-align:center">
+            <tr>
+                <th  >Student ID</th>
+                <th  >Last Name</th>
+                <th  >Exam ID</th>
+                <th  >Exam Name</th>
+                <th  >Grade</th>
+            </tr>
+            <tr th:each="grade : ${gradeList}">
+                <td th:text="${grade.getStudentID()}">a</td>
+                <td th:text="${grade.getLastName()}">a</td>
+                <td th:text="${grade.getExamID()}">a</td>
+                <td th:text="${grade.getExamName()}">a</td>
+                <td th:text="${grade.getGrade()}">a</td>
+                <!--<td><button type="submit" class="btn btn-info" href="javascript:showSign();">Edit</button></td>-->
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <div class="col-md-4" style="width: 300px">
+            <form th:action="@{/getGradeByExamID}" th:object="${examList}" method="get">
+                <label>Exam ID:</label>
+                <select class="form-control" name="examID"  >
+                    <option>Please Select Exam</option>
+                    <option  th:each="list:${examList}" th:text="${list.getExamID() }" th:value="${list.getExamID()}"></option>
+                </select>
+                <button type="submit" class="btn btn-success" style="margin-top: 5px">Query</button>
+            </form>
+        </div>
+        <hr>
+        <div class="col-md-4"  style="width: 300px;">
+            <form th:action="@{/getGradeByStudentID}" th:object="${examList}" method="get">
+                <label>Student ID:</label>
+                <select class="form-control" name="studentID" >
+                    <option>Please Select Student</option>
+                    <option  id="studentID" th:each="list:${studentList}" th:text="${list.getStudentID() }"></option>
+                </select>
+                <button type="submit" class="btn btn-success" style="margin-top: 5px">Query</button>
+            </form>
+        </div>
+        <hr/>
+        <div class="col-md-4" style="width: 200px">
+            <label>Show All Grades</label>
+            <button type="submit" class="btn btn-success" style="margin-top: 5px" onclick="window.location.href='/exam'">Query</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

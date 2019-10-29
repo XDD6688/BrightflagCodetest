@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Brightflag Code Test</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+<script src="js/main.js"></script>
+
+</head>
+<body ng-app="bfCodeTest">
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="/">BF Code Test</a>
+		<button type="button" class="btn btn-success" onclick="window.location.href='/add'" style="margin-right: 10px">SELECT SUBJECT</button>
+		<button type="button" class="btn btn-success" onclick="window.location.href='/exam'" style="margin-right: 10px">EXAM</button>
+		<button type="button" class="btn btn-success" onclick="window.location.href='/grade'" style="margin-right: 10px">GRADE</button>
+	</nav>
+
+	<div ng-controller="studentCtrl" class="container">
+		<!--<form th:action="@{/getSubjectListOfStudent}" th:method="post">-->
+		<!--<table class="table" border="1" cellspacing="0">-->
+		<table class="table" style="margin-top: 20px">
+			<tr>
+				<th  >Student ID</th>
+				<th  >First Name</th>
+				<th  >Last Name</th>
+				<th  >Subjects</th>
+			</tr>
+			<tr th:each="student : ${studentList}">
+					<td th:text="${student.getStudentID()}" ></td>
+					<td th:text="${student.getFirstName()}" ></td>
+					<td th:text="${student.getLastName()}" ></td>
+					<td>
+						<table rules=none>
+								<tr th:each="list:${listList.get(student.getStudentID()-1)}" >
+									<td th:text="${list}"  ></td>
+								</tr>
+						</table>
+					</td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>
