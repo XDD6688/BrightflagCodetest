@@ -30,6 +30,8 @@ public class AddSubjectController {
             HttpServletRequest httpServletRequest,
             Model model
     ){
+        List<Subject> subjectList = subjectService.getSubjectList();
+        model.addAttribute("subjectList",subjectList);
         model.addAttribute("studentID",studentID);
         model.addAttribute("subjectID",subjectID);
         if(studentID == null || subjectID == null){
@@ -40,7 +42,6 @@ public class AddSubjectController {
         ArrayList<Integer> studentIdList = new ArrayList<>();
         ArrayList<Integer> subjectIdList = new ArrayList<>();
         List<Student> studentList = studentService.getStudents();
-        List<Subject> subjectList = subjectService.getSubjectList();
         for(Student student : studentList){
             studentIdList.add(student.getStudentID());
         }
