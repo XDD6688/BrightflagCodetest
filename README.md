@@ -19,7 +19,7 @@
 2. This page can also display specific exam information, such as all exam information for a given exam. Users can select and query through the drop-down menu on the right side of the page.
 ![image](https://github.com/sindychiu/BrightflagCodetest/blob/master/src/main/resources/codeTestImages/examOfExamID.png)
 3. Same as described above, the user can also display all the test information of the student according to the designated student.
-![image](https://github.com/sindychiu/BrightflagCodetest/blob/master/src/main/resources/codeTestImages/examPageOfStudentID.png)
+![image](https://github.com/sindychiu/BrightflagCodetest/blob/master/src/main/resources/codeTestImages/examGroupByStudentID.png)
 
 ## Grade Page
 1. The grade page shows the grade information for the student exams. At the same time as the exam is added, the grade is added to students, with an initial value of 0 (the function to modify grades can be added in the future).
